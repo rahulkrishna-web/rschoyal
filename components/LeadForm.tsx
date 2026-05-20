@@ -18,11 +18,12 @@ export default function LeadForm({ className = "" }: { className?: string }) {
 
   const requirements = [
     { value: "", label: "Select your requirement" },
-    { value: "setup_flour_plant", label: "Set up a new flour plant (20+ TPD)" },
-    { value: "upgrade_chakki", label: "Upgrade standard chakkis to Wonder Mill" },
-    { value: "iot_automation", label: "IoT Automation & remote plant control" },
-    { value: "pricing_demo", label: "Request price quotation & machine demo" },
-    { value: "other", label: "Other inquiries" },
+    { value: "new_plant_20_30", label: "New mill plant - 20 to 30 TPD" },
+    { value: "new_plant_30_100", label: "New mill plant - 30 to 100 TPD" },
+    { value: "new_plant_100_plus", label: "New mill plant - 100 TPD and above" },
+    { value: "upgrade_chakki", label: "Upgrade existing chakkis to Wonder Mill (30 TPD+)" },
+    { value: "wonder_miller_lite", label: "Wonder Miller Lite (panel only)" },
+    { value: "other", label: "Spares / service / other" },
   ];
 
   const validate = () => {
