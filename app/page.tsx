@@ -230,27 +230,24 @@ export default function Home() {
 
       {/* Floating Bottom CTA Button */}
       <div
-        className="fixed bottom-6 left-1/2 z-40 transition-all duration-500 ease-out flex items-center justify-center"
+        className="fixed bottom-6 left-1/2 z-40 transition-all duration-500 ease-out flex items-center justify-center group"
         style={{
           transform: `translateX(-50%) translateY(${showFloatingCTA ? "0px" : "100px"}) scale(${showFloatingCTA ? 1 : 0.9})`,
           opacity: showFloatingCTA ? 1 : 0,
           pointerEvents: showFloatingCTA ? "auto" : "none",
         }}
       >
-        {/* Pulsating Glow */}
-        <div 
-          className="absolute inset-0 rounded-full bg-brand-primary/60 animate-ping" 
-          style={{ animationDuration: '3s' }}
-        ></div>
-        
-        {/* Main CTA Button */}
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="relative bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-bold py-3.5 px-6 sm:px-8 rounded-full shadow-[0_8px_30px_var(--brand-primary)] hover:shadow-[0_10px_40px_var(--brand-primary)] hover:scale-105 transition-all duration-300 ease-out flex items-center gap-2 cursor-pointer whitespace-nowrap text-sm sm:text-base"
-        >
-          <span>Request a Callback</span>
-          <ArrowRight className="h-4 w-4" />
-        </button>
+        {/* Animated Border Wrapper (Shining Effect) */}
+        <div className="relative rounded-full p-[2px] animate-shimmer shadow-[0_8px_30px_var(--color-brand-primary)] group-hover:shadow-[0_10px_40px_var(--color-brand-primary)] group-hover:scale-105 transition-all duration-300">
+          {/* Main CTA Button */}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="relative bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-bold py-3.5 px-6 sm:px-8 rounded-full flex items-center gap-2 cursor-pointer whitespace-nowrap text-sm sm:text-base w-full h-full"
+          >
+            <span>Request a Callback</span>
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
       </div>
 
       {/* Popup Form Modal */}

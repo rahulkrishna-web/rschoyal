@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import confetti from "canvas-confetti";
 
 export default function LeadForm({ className = "" }: { className?: string }) {
   const [formData, setFormData] = useState({
@@ -49,6 +50,12 @@ export default function LeadForm({ className = "" }: { className?: string }) {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 },
+        colors: ["#819A91", "#A7C1A8", "#D1D8BE", "#ffffff"],
+      });
     }, 1200);
   };
 
