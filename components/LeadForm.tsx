@@ -90,7 +90,7 @@ export default function LeadForm({ className = "" }: { className?: string }) {
           Talk to a Wonder Mill expert
         </h3>
         <p className="text-sm sm:text-base text-slate-500 mt-2 leading-relaxed">
-          Share your details — we&apos;ll call back within one working day with plant sizing & pricing.
+          Share your details - we&apos;ll call back within one working day with plant sizing & pricing.
         </p>
       </div>
 

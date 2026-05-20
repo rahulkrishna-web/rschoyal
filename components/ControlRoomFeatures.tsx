@@ -49,7 +49,7 @@ export default function ControlRoomFeatures() {
       title: "Recipe-based milling",
       points: [
         "Pre-set recipes for every flour grade you produce",
-        "One-tap recall — same yield & texture, every batch",
+        "One-tap recall - same yield & texture, every batch",
         "Eliminates operator-to-operator variance",
       ],
       accent: "from-brand-violet to-brand-indigo",
@@ -82,7 +82,7 @@ export default function ControlRoomFeatures() {
             Everything a modern flour mill control room needs
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            From manual override to full automation — Wonder Mill grows with your plant.
+            From manual override to full automation - Wonder Mill grows with your plant.
           </p>
         </div>
 

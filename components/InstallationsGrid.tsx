@@ -24,7 +24,7 @@ export default function InstallationsGrid() {
       img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
     },
     {
-      title: "Wonder Mill — Close-Up",
+      title: "Wonder Mill - Close-Up",
       desc: "High-precision digital grinding stone casing",
       tag: "Equipment",
       img: "/images/mill_close_up.png",

@@ -17,7 +17,7 @@ export default function ComparisonTable() {
     {
       metric: "Power saving",
       wonder: "Up to 30%",
-      standard: "—",
+      standard: "-",
     },
     {
       metric: "Gear drive",

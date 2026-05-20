@@ -72,7 +72,7 @@ export default function Home() {
     {
       icon: <Check className="h-6 w-6" />,
       title: "Recipe-based milling, every batch",
-      description: "Pre-set recipes for every flour grade you sell — one tap recalls the same colour, texture and yield, shift after shift.",
+      description: "Pre-set recipes for every flour grade you sell - one tap recalls the same colour, texture and yield, shift after shift.",
     },
     {
       icon: <Clock className="h-6 w-6" />,
@@ -87,12 +87,12 @@ export default function Home() {
     {
       icon: <FileText className="h-6 w-6" />,
       title: "Audit-ready data, on tap",
-      description: "Every shift's running hours, energy and output logged automatically — ready when buyers, auditors or your bank ask.",
+      description: "Every shift's running hours, energy and output logged automatically - ready when buyers, auditors or your bank ask.",
     },
     {
       icon: <Cloud className="h-6 w-6" />,
       title: "An investment that grows with you",
-      description: "Cloud-ready, modular and patented — scale from one Wonder Mill to a fully digital 100 TPD plant without ripping anything out.",
+      description: "Cloud-ready, modular and patented - scale from one Wonder Mill to a fully digital 100 TPD plant without ripping anything out.",
     },
   ];
 
@@ -107,7 +107,7 @@ export default function Home() {
       {/* Navigation Header */}
       <Header onRequestCallback={() => setIsModalOpen(true)} />
 
-      {/* ─── Main Lead Section — Aurora Slow Light Motion ─── */}
+      {/* --- Main Lead Section - Aurora Slow Light Motion --- */}
       <main ref={heroRef} className="w-full px-6 sm:px-12 lg:px-16 xl:px-24 py-12 lg:py-20 relative z-10 lead-gradient">
         {/* Aurora Glowing Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -135,8 +135,8 @@ export default function Home() {
 
             {/* Description Paragraph */}
             <p className="text-base sm:text-lg text-[#3e4d46] leading-relaxed max-w-3xl">
-              Wonder Mill is a patented, IoT-enabled digital stone mill — known as a
-              chakki in India — built for flour plants from 20 TPD onwards. Replace
+              Wonder Mill is a patented, IoT-enabled digital stone mill - known as a
+              chakki in India - built for flour plants from 20 TPD onwards. Replace
               your standard chakkis with recipe-based milling, run the entire plant
               from your phone, and cut your power bill from day one.
             </p>
@@ -167,7 +167,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Why Wonder Mill Section — cream bg (default) */}
+      {/* Why Wonder Mill Section - cream bg (default) */}
       <section className="w-full px-6 sm:px-12 lg:px-16 xl:px-24 py-16 lg:py-24 relative z-10 section-bg-cream">
         <div className="w-full space-y-16">
           
@@ -204,25 +204,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Metrics Section — tinted tertiary bg */}
+      {/* Metrics Section - tinted tertiary bg */}
       <MetricsSection />
 
-      {/* Control Room Features Section — secondary mist bg */}
+      {/* Control Room Features Section - secondary mist bg */}
       <ControlRoomFeatures />
 
-      {/* HMI Section — cream bg */}
+      {/* HMI Section - cream bg */}
       <HMISection />
 
-      {/* Comparison Table Section — tertiary bg */}
+      {/* Comparison Table Section - tertiary bg */}
       <ComparisonTable />
 
-      {/* Installations Section — cream bg */}
+      {/* Installations Section - cream bg */}
       <InstallationsGrid />
 
-      {/* Testimonials Section — secondary mist */}
+      {/* Testimonials Section - secondary mist */}
       <Testimonials />
 
-      {/* FAQ Section — cream bg */}
+      {/* FAQ Section - cream bg */}
       <FAQSection />
 
       {/* End CTA & Footer Section */}

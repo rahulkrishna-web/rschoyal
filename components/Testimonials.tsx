@@ -6,7 +6,7 @@ export default function Testimonials() {
   const testimonials = [
     {
       name: "Rajesh Sharma",
-      role: "Owner — 60 TPD Atta Plant",
+      role: "Owner - 60 TPD Atta Plant",
       location: "Indore, India",
       initials: "RS",
       color: "bg-emerald-600",
@@ -14,7 +14,7 @@ export default function Testimonials() {
     },
     {
       name: "Pankaj Khanna",
-      role: "Operations Head — Flour Mill",
+      role: "Operations Head - Flour Mill",
       location: "Ahmedabad, India",
       initials: "PK",
       color: "bg-indigo-600",
@@ -22,7 +22,7 @@ export default function Testimonials() {
     },
     {
       name: "Anil Shah",
-      role: "MD — Family Flour Mill",
+      role: "MD - Family Flour Mill",
       location: "Nagpur, India",
       initials: "AS",
       color: "bg-violet-600",
@@ -38,7 +38,7 @@ export default function Testimonials() {
     },
     {
       name: "Gurbaksh Singh",
-      role: "Director — Food Processing",
+      role: "Director - Food Processing",
       location: "Ludhiana, India",
       initials: "GS",
       color: "bg-amber-600",
@@ -70,7 +70,7 @@ export default function Testimonials() {
     },
     {
       name: "Vijay Shekhawat",
-      role: "Owner — Shekhawat Mills",
+      role: "Owner - Shekhawat Mills",
       location: "Jaipur, India",
       initials: "VS",
       color: "bg-orange-600",
@@ -86,7 +86,7 @@ export default function Testimonials() {
     },
     {
       name: "Sanjay Banerjee",
-      role: "Director — Quality Assurance",
+      role: "Director - Quality Assurance",
       location: "Haldia, India",
       initials: "SB",
       color: "bg-blue-600",
@@ -124,7 +124,7 @@ export default function Testimonials() {
             Customer Voices
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
-            Mill owners who upgraded — and never looked back
+            Mill owners who upgraded - and never looked back
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             Hear directly from flour mill owners and operators about how Wonder Mill transformed their daily operations, consistency, and profitability.
