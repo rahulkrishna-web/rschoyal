@@ -145,6 +145,15 @@ export default function SkinControlPanel() {
     root.style.setProperty("--brand-muted", muted);
     root.style.setProperty("--brand-card", card);
     root.style.setProperty("--brand-border", border);
+
+    // Update browser theme color dynamically
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement("meta");
+      metaThemeColor.setAttribute("name", "theme-color");
+      document.head.appendChild(metaThemeColor);
+    }
+    metaThemeColor.setAttribute("content", primary);
   }, [primary, primaryHover, secondary, tertiary, bg, foreground, muted, card, border]);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
