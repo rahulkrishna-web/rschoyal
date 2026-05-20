@@ -237,8 +237,7 @@ export default function Home() {
           pointerEvents: showFloatingCTA ? "auto" : "none",
         }}
       >
-        {/* Animated Border Wrapper (Shining Effect) */}
-        <div className="relative rounded-full p-[2px] animate-shimmer shadow-[0_8px_30px_var(--color-brand-primary)] group-hover:shadow-[0_10px_40px_var(--color-brand-primary)] group-hover:scale-105 transition-all duration-300">
+        <div className="relative rounded-full p-[2px] animate-shimmer shadow-xl group-hover:shadow-2xl group-hover:shadow-black/20 group-hover:scale-105 transition-all duration-300">
           {/* Main CTA Button */}
           <button
             onClick={() => setIsModalOpen(true)}
