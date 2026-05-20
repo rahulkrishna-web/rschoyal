@@ -209,9 +209,9 @@ body {
   background: linear-gradient(
     110deg,
     var(--color-brand-primary) 35%,
-    color-mix(in srgb, var(--color-brand-tertiary) 25%, transparent) 45%,
-    color-mix(in srgb, var(--color-brand-tertiary) 65%, transparent) 50%,
-    color-mix(in srgb, var(--color-brand-tertiary) 25%, transparent) 55%,
+    color-mix(in srgb, var(--color-brand-tertiary) 35%, var(--color-brand-primary)) 45%,
+    color-mix(in srgb, var(--color-brand-tertiary) 80%, var(--color-brand-primary)) 50%,
+    color-mix(in srgb, var(--color-brand-tertiary) 35%, var(--color-brand-primary)) 55%,
     var(--color-brand-primary) 65%
   );
   background-size: 200% 100%;
