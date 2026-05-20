@@ -231,7 +231,7 @@ export default function Home() {
       {/* Floating Bottom CTA Button */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-6 left-1/2 z-40 bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-bold py-3.5 px-8 rounded-full shadow-2xl hover:shadow-brand-primary/30 transition-all duration-500 ease-out flex items-center gap-2 cursor-pointer"
+        className="fixed bottom-6 left-1/2 z-40 bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-bold py-3.5 px-6 sm:px-8 rounded-full shadow-2xl hover:shadow-brand-primary/30 transition-all duration-500 ease-out flex items-center gap-2 cursor-pointer whitespace-nowrap text-sm sm:text-base"
         style={{
           transform: `translateX(-50%) translateY(${showFloatingCTA ? "0px" : "100px"}) scale(${showFloatingCTA ? 1 : 0.9})`,
           opacity: showFloatingCTA ? 1 : 0,
