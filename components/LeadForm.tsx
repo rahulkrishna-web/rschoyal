@@ -7,7 +7,6 @@ export default function LeadForm({ className = "" }: { className?: string }) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    country: "",
     city: "",
     email: "",
     requirement: "",
@@ -30,7 +29,6 @@ export default function LeadForm({ className = "" }: { className?: string }) {
     const newErrors: Record<string, string> = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
-    if (!formData.country.trim()) newErrors.country = "Country is required";
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.requirement) newErrors.requirement = "Please select a requirement";
     
@@ -69,7 +67,7 @@ export default function LeadForm({ className = "" }: { className?: string }) {
         </p>
         <button
           onClick={() => {
-            setFormData({ name: "", phone: "", country: "", city: "", email: "", requirement: "" });
+            setFormData({ name: "", phone: "", city: "", email: "", requirement: "" });
             setIsSuccess(false);
           }}
           className="mt-8 text-xs font-bold text-brand-indigo hover:text-brand-indigo-hover tracking-wider uppercase transition-colors duration-200"
@@ -116,7 +114,7 @@ export default function LeadForm({ className = "" }: { className?: string }) {
           {errors.name && <p className="text-[11px] text-red-500 mt-1">{errors.name}</p>}
         </div>
 
-        {/* Phone & Country Fields (Grid) */}
+        {/* Phone & Email Fields (Grid) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
@@ -138,20 +136,20 @@ export default function LeadForm({ className = "" }: { className?: string }) {
 
           <div>
             <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
-              Country <span className="text-brand-indigo">*</span>
+              Email <span className="text-slate-400 font-normal lowercase">(optional)</span>
             </label>
             <input
-              type="text"
-              placeholder="e.g. India"
-              value={formData.country}
-              onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+              type="email"
+              placeholder="email@example.com"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
-                errors.country
+                errors.email
                   ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
                   : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
               }`}
             />
-            {errors.country && <p className="text-[11px] text-red-500 mt-1">{errors.country}</p>}
+            {errors.email && <p className="text-[11px] text-red-500 mt-1">{errors.email}</p>}
           </div>
         </div>
 
@@ -172,25 +170,6 @@ export default function LeadForm({ className = "" }: { className?: string }) {
             }`}
           />
           {errors.city && <p className="text-[11px] text-red-500 mt-1">{errors.city}</p>}
-        </div>
-
-        {/* Email Field (Optional) */}
-        <div>
-          <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
-            Email <span className="text-slate-400 font-normal lowercase">(optional)</span>
-          </label>
-          <input
-            type="email"
-            placeholder="email@example.com"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
-              errors.email
-                ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
-                : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
-            }`}
-          />
-          {errors.email && <p className="text-[11px] text-red-500 mt-1">{errors.email}</p>}
         </div>
 
         {/* Requirement Field */}
