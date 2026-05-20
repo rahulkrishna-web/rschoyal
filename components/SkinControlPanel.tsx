@@ -20,17 +20,17 @@ interface ColorPreset {
 
 const PRESETS: ColorPreset[] = [
   {
-    name: "Sage & Cream (Default)",
+    name: "Classic Wonder Mill (Default)",
     colors: {
-      primary: "#819A91",
-      primaryHover: "#6f877e",
-      secondary: "#A7C1A8",
-      tertiary: "#D1D8BE",
-      bg: "#EEEFE0",
-      foreground: "#1c2722",
-      muted: "#3e4d46",
-      card: "rgba(255, 255, 255, 0.85)",
-      border: "rgba(28, 39, 34, 0.08)"
+      primary: "#015435",
+      primaryHover: "#015435",
+      secondary: "#33ac7f",
+      tertiary: "#faa831",
+      bg: "#F9F6F0",
+      foreground: "#3C2317",
+      muted: "#7A5E53",
+      card: "rgba(255, 255, 255, 0.9)",
+      border: "rgba(60, 35, 23, 0.08)"
     }
   },
   {
@@ -87,15 +87,15 @@ export default function SkinControlPanel() {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
   // Color states
-  const [primary, setPrimary] = useState("#819A91");
-  const [primaryHover, setPrimaryHover] = useState("#6f877e");
-  const [secondary, setSecondary] = useState("#A7C1A8");
-  const [tertiary, setTertiary] = useState("#D1D8BE");
-  const [bg, setBg] = useState("#EEEFE0");
-  const [foreground, setForeground] = useState("#1c2722");
-  const [muted, setMuted] = useState("#3e4d46");
-  const [card, setCard] = useState("rgba(255, 255, 255, 0.85)");
-  const [border, setBorder] = useState("rgba(28, 39, 34, 0.08)");
+  const [primary, setPrimary] = useState("#015435");
+  const [primaryHover, setPrimaryHover] = useState("#015435");
+  const [secondary, setSecondary] = useState("#33ac7f");
+  const [tertiary, setTertiary] = useState("#faa831");
+  const [bg, setBg] = useState("#F9F6F0");
+  const [foreground, setForeground] = useState("#3C2317");
+  const [muted, setMuted] = useState("#7A5E53");
+  const [card, setCard] = useState("rgba(255, 255, 255, 0.9)");
+  const [border, setBorder] = useState("rgba(60, 35, 23, 0.08)");
 
   // Toggle open state on Ctrl + 9
   useEffect(() => {

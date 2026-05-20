@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: var(--brand-primary, #819A91);
-  --color-brand-primary-hover: var(--brand-primary-hover, #6f877e);
-  --color-brand-secondary: var(--brand-secondary, #A7C1A8);
-  --color-brand-tertiary: var(--brand-tertiary, #D1D8BE);
-  --color-brand-bg: var(--brand-bg, #EEEFE0);
-  --color-brand-card: var(--brand-card, rgba(255, 255, 255, 0.85));
-  --color-brand-border: var(--brand-border, rgba(28, 39, 34, 0.08));
-  --color-brand-foreground: var(--brand-foreground, #1c2722);
-  --color-brand-muted: var(--brand-muted, #3e4d46);
+  --color-brand-primary: var(--brand-primary, #015435);
+  --color-brand-primary-hover: var(--brand-primary-hover, #015435);
+  --color-brand-secondary: var(--brand-secondary, #33ac7f);
+  --color-brand-tertiary: var(--brand-tertiary, #faa831);
+  --color-brand-bg: var(--brand-bg, #F9F6F0);
+  --color-brand-card: var(--brand-card, rgba(255, 255, 255, 0.9));
+  --color-brand-border: var(--brand-border, rgba(60, 35, 23, 0.08));
+  --color-brand-foreground: var(--brand-foreground, #3C2317);
+  --color-brand-muted: var(--brand-muted, #7A5E53);
   
   /* Legacy aliases mapped to main parameters */
-  --color-brand-indigo: var(--brand-primary, #819A91);
-  --color-brand-indigo-hover: var(--brand-primary-hover, #6f877e);
-  --color-brand-cyan: var(--brand-tertiary, #D1D8BE);
-  --color-brand-violet: var(--brand-secondary, #A7C1A8);
+  --color-brand-indigo: var(--brand-primary, #015435);
+  --color-brand-indigo-hover: var(--brand-primary-hover, #015435);
+  --color-brand-cyan: var(--brand-tertiary, #faa831);
+  --color-brand-violet: var(--brand-secondary, #33ac7f);
   
   --font-sans: var(--font-geist-sans), Arial, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
