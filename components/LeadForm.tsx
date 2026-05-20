@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import confetti from "canvas-confetti";
-
+import { useRouter } from "next/navigation";
 export default function LeadForm({ className = "" }: { className?: string }) {
   const [formData, setFormData] = useState({
     name: "",
@@ -15,7 +14,7 @@ export default function LeadForm({ className = "" }: { className?: string }) {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const router = useRouter();
 
   const requirements = [
     { value: "", label: "Select your requirement" },
@@ -49,41 +48,10 @@ export default function LeadForm({ className = "" }: { className?: string }) {
     // Simulate API request
     setTimeout(() => {
       setIsSubmitting(false);
-      setIsSuccess(true);
-      confetti({
-        particleCount: 150,
-        spread: 80,
-        origin: { y: 0.6 },
-        colors: ["#819A91", "#A7C1A8", "#D1D8BE", "#ffffff"],
-      });
+      router.push("/thank-you?success=true");
     }, 1200);
   };
 
-  if (isSuccess) {
-    return (
-      <div className={`relative glass-panel rounded-3xl p-8 shadow-2xl flex flex-col items-center justify-center text-center min-h-[520px] transition-all duration-500 border border-brand-indigo/15 ${className || "shadow-slate-900/10"}`}>
-        <div className="absolute -top-3.5 left-8 bg-gradient-to-r from-brand-indigo to-brand-violet text-white text-[10px] font-extrabold tracking-wider px-3.5 py-1.5 rounded-lg shadow-md">
-          REQUEST RECEIVED
-        </div>
-        <div className="w-16 h-16 rounded-full bg-brand-indigo/5 border border-brand-indigo/20 flex items-center justify-center mb-6 animate-pulse">
-          <CheckCircle2 className="h-10 w-10 text-brand-indigo" />
-        </div>
-        <h3 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">Callback Scheduled</h3>
-        <p className="text-slate-600 text-sm max-w-xs leading-relaxed">
-          Thanks for reaching out! A Wonder Mill plant consultant will review your requirement and contact you within 24 hours.
-        </p>
-        <button
-          onClick={() => {
-            setFormData({ name: "", phone: "", city: "", email: "", requirement: "" });
-            setIsSuccess(false);
-          }}
-          className="mt-8 text-xs font-bold text-brand-indigo hover:text-brand-indigo-hover tracking-wider uppercase transition-colors duration-200"
-        >
-          Submit another request
-        </button>
-      </div>
-    );
-  }
 
   return (
     <div className={`relative glass-panel rounded-3xl p-8 shadow-2xl ${className || "shadow-slate-900/10"} transition-all duration-300`}>
