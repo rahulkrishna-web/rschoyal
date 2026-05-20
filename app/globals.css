@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-primary: #819A91;
+  --color-brand-primary-hover: #6f877e;
+  --color-brand-secondary: #A7C1A8;
+  --color-brand-tertiary: #D1D8BE;
+  --color-brand-bg: #EEEFE0;
+  --color-brand-card: rgba(255, 255, 255, 0.85);
+  --color-brand-border: rgba(28, 39, 34, 0.08);
+  /* Legacy aliases for components that still reference old names */
+  --color-brand-indigo: #819A91;
+  --color-brand-indigo-hover: #6f877e;
+  --color-brand-cyan: #D1D8BE;
+  --color-brand-violet: #A7C1A8;
+  --font-sans: var(--font-geist-sans), Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  color-scheme: light !important;
+  --background: #EEEFE0 !important;
+  --foreground: #1c2722 !important;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #EEEFE0 !important;
+  color: #1c2722 !important;
+  overflow-x: hidden;
 }
+
+/* Disable Tailwind v4 automatic dark mode variant */
+@custom-variant dark (&:not(*));
+
+/* Glassmorphism utility animations and glows for light mode */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(28, 39, 34, 0.08) !important;
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(129, 154, 145, 0.4) !important;
+  box-shadow: 0 10px 30px rgba(129, 154, 145, 0.15) !important;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, #1c2722 30%, #3e4d46 100%);
+}
+
+.text-gradient-accent {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, #819A91 0%, #a7c1a8 100%);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  animation: marquee 55s linear infinite;
+}
+
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* ── Lead Section Aurora Animation ── */
+@keyframes aurora1 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.15) rotate(120deg);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.9) rotate(240deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes aurora2 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50px, 50px) scale(1.2) rotate(-180deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(-360deg);
+  }
+}
+
+@keyframes aurora3 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(60px, -40px) scale(0.85) rotate(180deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
+  }
+}
+
+.animate-aurora-slow-1 {
+  animation: aurora1 30s infinite alternate ease-in-out;
+}
+
+.animate-aurora-slow-2 {
+  animation: aurora2 35s infinite alternate ease-in-out;
+}
+
+.animate-aurora-slow-3 {
+  animation: aurora3 27s infinite alternate ease-in-out;
+}
+
+.lead-gradient {
+  background-color: #EEEFE0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Alternating Section Backgrounds ── */
+.section-bg-cream {
+  background-color: #EEEFE0;
+}
+
+.section-bg-tertiary {
+  background: linear-gradient(180deg, rgba(209, 216, 190, 0.25) 0%, rgba(238, 239, 224, 0.4) 100%);
+}
+
+.section-bg-secondary {
+  background: linear-gradient(180deg, rgba(167, 193, 168, 0.12) 0%, rgba(209, 216, 190, 0.18) 100%);
+}
+
+.section-bg-primary-mist {
+  background: linear-gradient(180deg, rgba(129, 154, 145, 0.08) 0%, rgba(167, 193, 168, 0.1) 100%);
+}
+
+/* Soft masked edge fade for marquee */
+.mask-gradient {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #1c2722 5%, #1c2722 95%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #1c2722 5%, #1c2722 95%, transparent 100%);
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
