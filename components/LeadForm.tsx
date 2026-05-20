@@ -83,7 +83,7 @@ export default function LeadForm({ className = "" }: { className?: string }) {
   return (
     <div className={`relative glass-panel rounded-3xl p-8 shadow-2xl ${className || "shadow-slate-900/10"} transition-all duration-300`}>
       {/* Overlapping top badge */}
-      <div className="absolute -top-3.5 left-8 bg-gradient-to-r from-brand-indigo to-brand-violet text-white text-[10px] font-extrabold tracking-widest px-3.5 py-1.5 rounded-lg shadow-md select-none uppercase">
+      <div className="absolute -top-3.5 left-8 animate-shimmer text-white text-[10px] font-extrabold tracking-widest px-3.5 py-1.5 rounded-lg shadow-md select-none uppercase">
         FREE CONSULTATION
       </div>
 
@@ -91,7 +91,7 @@ export default function LeadForm({ className = "" }: { className?: string }) {
         <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
           Talk to a Wonder Mill expert
         </h3>
-        <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-500 mt-2 leading-relaxed">
           Share your details — we&apos;ll call back within one working day with plant sizing & pricing.
         </p>
       </div>
@@ -240,7 +240,7 @@ export default function LeadForm({ className = "" }: { className?: string }) {
         </button>
 
         {/* Terms Note */}
-        <p className="text-[10px] text-slate-400 text-center mt-3 leading-relaxed">
+        <p className="text-xs text-slate-500 text-center mt-3 leading-relaxed">
           By submitting, you agree to be contacted by our team. No spam.
         </p>
       </form>

@@ -1,31 +1,55 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: #819A91;
-  --color-brand-primary-hover: #6f877e;
-  --color-brand-secondary: #A7C1A8;
-  --color-brand-tertiary: #D1D8BE;
-  --color-brand-bg: #EEEFE0;
-  --color-brand-card: rgba(255, 255, 255, 0.85);
-  --color-brand-border: rgba(28, 39, 34, 0.08);
-  /* Legacy aliases for components that still reference old names */
-  --color-brand-indigo: #819A91;
-  --color-brand-indigo-hover: #6f877e;
-  --color-brand-cyan: #D1D8BE;
-  --color-brand-violet: #A7C1A8;
+  --color-brand-primary: var(--brand-primary, #819A91);
+  --color-brand-primary-hover: var(--brand-primary-hover, #6f877e);
+  --color-brand-secondary: var(--brand-secondary, #A7C1A8);
+  --color-brand-tertiary: var(--brand-tertiary, #D1D8BE);
+  --color-brand-bg: var(--brand-bg, #EEEFE0);
+  --color-brand-card: var(--brand-card, rgba(255, 255, 255, 0.85));
+  --color-brand-border: var(--brand-border, rgba(28, 39, 34, 0.08));
+  --color-brand-foreground: var(--brand-foreground, #1c2722);
+  --color-brand-muted: var(--brand-muted, #3e4d46);
+  
+  /* Legacy aliases mapped to main parameters */
+  --color-brand-indigo: var(--brand-primary, #819A91);
+  --color-brand-indigo-hover: var(--brand-primary-hover, #6f877e);
+  --color-brand-cyan: var(--brand-tertiary, #D1D8BE);
+  --color-brand-violet: var(--brand-secondary, #A7C1A8);
+  
   --font-sans: var(--font-geist-sans), Arial, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
+
+  /* Scaled up font-size theme variables for enhanced readability for elderly users */
+  --font-size-xs: 0.875rem;
+  --font-size-xs--line-height: 1.25rem;
+  --font-size-sm: 1rem;
+  --font-size-sm--line-height: 1.5rem;
+  --font-size-base: 1.125rem;
+  --font-size-base--line-height: 1.75rem;
+  --font-size-lg: 1.25rem;
+  --font-size-lg--line-height: 1.875rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xl--line-height: 2rem;
+  --font-size-2xl: 1.875rem;
+  --font-size-2xl--line-height: 2.25rem;
+  --font-size-3xl: 2.25rem;
+  --font-size-3xl--line-height: 2.5rem;
+  --font-size-4xl: 3rem;
+  --font-size-4xl--line-height: 1.1;
+  --font-size-5xl: 3.75rem;
+  --font-size-5xl--line-height: 1.1;
 }
 
 :root {
   color-scheme: light !important;
-  --background: #EEEFE0 !important;
-  --foreground: #1c2722 !important;
+  --background: var(--color-brand-bg) !important;
+  --foreground: var(--color-brand-foreground) !important;
 }
 
 body {
-  background-color: #EEEFE0 !important;
-  color: #1c2722 !important;
+  background-color: var(--color-brand-bg) !important;
+  color: var(--color-brand-foreground) !important;
   overflow-x: hidden;
 }
 
@@ -34,10 +58,10 @@ body {
 
 /* Glassmorphism utility animations and glows for light mode */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85) !important;
+  background: var(--color-brand-card) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(28, 39, 34, 0.08) !important;
+  border: 1px solid var(--color-brand-border) !important;
 }
 
 .glass-panel-hover:hover {
@@ -170,5 +194,27 @@ body {
 
 .animate-scale-in {
   animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    110deg,
+    var(--color-brand-primary) 35%,
+    color-mix(in srgb, var(--color-brand-tertiary) 25%, transparent) 45%,
+    color-mix(in srgb, var(--color-brand-tertiary) 65%, transparent) 50%,
+    color-mix(in srgb, var(--color-brand-tertiary) 25%, transparent) 55%,
+    var(--color-brand-primary) 65%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3.5s infinite linear;
 }
 

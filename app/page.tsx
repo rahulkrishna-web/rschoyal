@@ -13,6 +13,7 @@ import InstallationsGrid from "@/components/InstallationsGrid";
 import Testimonials from "@/components/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import SkinControlPanel from "@/components/SkinControlPanel";
 
 interface GlowCardProps {
   children: React.ReactNode;
@@ -257,6 +258,9 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Design Skin Control Panel widget */}
+      <SkinControlPanel />
 
     </div>
   );
