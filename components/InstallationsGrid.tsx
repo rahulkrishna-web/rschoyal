@@ -9,7 +9,7 @@ export default function InstallationsGrid() {
       title: "60 TPD Atta Plant",
       desc: "Indore, India · 8 Wonder Mills",
       tag: "Domestic Plant",
-      img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop",
+      img: "/images/atta_plant.png",
     },
     {
       title: "Centralised Control Room",
@@ -27,7 +27,7 @@ export default function InstallationsGrid() {
       title: "Wonder Mill — Close-Up",
       desc: "High-precision digital grinding stone casing",
       tag: "Equipment",
-      img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop",
+      img: "/images/mill_close_up.png",
     },
     {
       title: "HMI in Operation",
@@ -39,7 +39,7 @@ export default function InstallationsGrid() {
       title: "Miller Lite Panel Install",
       desc: "Modular control electrical cabinet layout",
       tag: "Automation",
-      img: "https://images.unsplash.com/photo-1590986424791-2355385d0442?q=80&w=600&auto=format&fit=crop",
+      img: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=600&auto=format&fit=crop",
     },
   ];
 
