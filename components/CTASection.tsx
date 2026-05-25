@@ -90,7 +90,7 @@ export default function CTASection({ onRequestCallback }: CTASectionProps) {
       </div>
 
       {/* Lower Footer Block (Light Slate/Gray with Glassmorphism) */}
-      <footer className="w-full pt-16 px-6 sm:px-12 lg:px-16 xl:px-24 section-bg-primary-mist">
+      <footer className="w-full pt-16 pb-32 px-6 sm:px-12 lg:px-16 xl:px-24 section-bg-primary-mist">
         <div className="w-full mx-auto">
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
