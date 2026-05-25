@@ -6,40 +6,40 @@ import { MapPin, Settings, Cpu } from "lucide-react";
 export default function InstallationsGrid() {
   const installations = [
     {
-      title: "60 TPD Atta Plant",
-      desc: "Indore, India · 8 Wonder Mills",
+      title: "150 TPD Atta Plant",
+      desc: "Indore, India · 12 Wonder Mills",
       tag: "Domestic Plant",
-      img: "/images/atta_plant.png",
+      img: "/images/atta_plant_150tpd.webp",
     },
     {
       title: "Centralised Control Room",
       desc: "Ahmedabad, India · 100 TPD plant",
       tag: "Control Room",
-      img: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop",
+      img: "/images/wondermill_internal.webp",
     },
     {
-      title: "Wholegrain Flour Facility",
-      desc: "Lagos, Nigeria · 40 TPD plant",
+      title: "Zams Milling Facility",
+      desc: "Lusaka, Zambia · 40 TPD plant",
       tag: "International",
-      img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop",
+      img: "/images/zams_milling.webp",
     },
     {
-      title: "Wonder Mill - Close-Up",
-      desc: "High-precision digital grinding stone casing",
+      title: "Wonder Mill Casing Close-Up",
+      desc: "High-precision digital grinding stone installation",
       tag: "Equipment",
-      img: "/images/mill_close_up.png",
+      img: "/images/annapurna.webp",
     },
     {
-      title: "HMI in Operation",
-      desc: "Tablet-mounted operator dashboard at work",
-      tag: "Interface",
-      img: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=600&auto=format&fit=crop",
+      title: "Qatar Flour Mill HMI",
+      desc: "Doha, Qatar · 12 Wonder Mills in operation",
+      tag: "International",
+      img: "/images/qatar.webp",
     },
     {
-      title: "Miller Lite Panel Install",
+      title: "Automation Panel Setup",
       desc: "Modular control electrical cabinet layout",
       tag: "Automation",
-      img: "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?q=80&w=600&auto=format&fit=crop",
+      img: "/images/other_img_9476.webp",
     },
   ];
 

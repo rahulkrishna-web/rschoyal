@@ -97,6 +97,11 @@ export default function CTASection({ onRequestCallback }: CTASectionProps) {
             
             {/* Left Box: Company Details */}
             <div className="space-y-4">
+              <img 
+                src="/rschoyal-logo.svg" 
+                alt="RS Choyal Group Logo" 
+                className="h-[80px] w-auto object-contain"
+              />
               <h3 className="text-xs font-bold text-slate-900 tracking-widest uppercase">
                 RS Choyal Group
               </h3>

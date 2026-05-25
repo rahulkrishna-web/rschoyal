@@ -30,7 +30,7 @@ export default function HMIDashboardMockup() {
   }, [isRunning]);
 
   return (
-    <div className="w-full max-w-[650px] aspect-[16/10] bg-slate-900 text-slate-100 rounded-3xl p-6 shadow-2xl relative overflow-hidden border border-slate-800">
+    <div className="w-full max-w-[650px] aspect-auto sm:aspect-[16/10] bg-slate-900 text-slate-100 rounded-3xl p-4 sm:p-6 shadow-2xl relative overflow-hidden border border-slate-800">
       
       {/* Device Bezel & Header */}
       <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
@@ -50,10 +50,10 @@ export default function HMIDashboardMockup() {
       </div>
 
       {/* Main Grid Content */}
-      <div className="grid grid-cols-3 gap-4 h-[calc(100%-80px)]">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:h-[calc(100%-80px)] h-auto">
         
         {/* Left Column: Motor Speed & Control */}
-        <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-4 flex flex-col justify-between">
+        <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-4 flex flex-col justify-between gap-4">
           <div>
             <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Motor Speed</h4>
             <div className="relative flex items-center justify-center py-4">
@@ -97,7 +97,7 @@ export default function HMIDashboardMockup() {
         {/* Center Column: Live Recipe Selection & Temp */}
         <div className="space-y-4 flex flex-col">
           {/* Recipe Select Widget */}
-          <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-4 flex-1 flex flex-col justify-between">
+          <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-4 flex-1 flex flex-col justify-between gap-3">
             <div>
               <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Recipe Profile</h4>
               <div className="space-y-2">
@@ -139,7 +139,7 @@ export default function HMIDashboardMockup() {
         {/* Right Column: Energy & System Alerts */}
         <div className="space-y-4 flex flex-col">
           {/* Live Energy Consumption */}
-          <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-4 flex-1 flex flex-col justify-between">
+          <div className="bg-slate-950/40 border border-slate-800/80 rounded-2xl p-4 flex-1 flex flex-col justify-between gap-3">
             <div>
               <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Live Power Load</h4>
               <div className="flex items-baseline space-x-1.5 mt-2">

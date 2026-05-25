@@ -35,6 +35,32 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showFloatingCTA, setShowFloatingCTA] = useState(false);
 
+  const carouselImages = [
+    "/images/eminent_group.webp",
+    "/images/zams_milling.webp",
+    "/images/qatar.webp",
+    "/images/atta_plant_150tpd.webp",
+    "/images/wondermill_internal.webp",
+    "/images/annapurna.webp",
+    "/images/other_3.webp",
+    "/images/other_20221110_1.webp",
+    "/images/other_img_9476.webp",
+    "/images/other_20221110_2.webp",
+    "/images/other_a1.webp",
+    "/images/other_img_9479.webp",
+    "/images/other_img_9616.webp",
+    "/images/other_20221110_3.webp",
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [carouselImages.length]);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -107,17 +133,38 @@ export default function Home() {
       {/* Navigation Header */}
       <Header onRequestCallback={() => setIsModalOpen(true)} />
 
-      {/* --- Main Lead Section - Aurora Slow Light Motion --- */}
+      {/* --- Main Lead Section - Aurora Slow Light Motion & Image Carousel --- */}
       <main ref={heroRef} className="w-full px-6 sm:px-12 lg:px-16 xl:px-24 py-12 lg:py-20 relative z-10 lead-gradient">
-        {/* Aurora Glowing Elements */}
+        {/* Background Image Carousel (Below/behind the overlay) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-[-25%] left-[-15%] w-[65%] aspect-square rounded-full bg-brand-primary/18 blur-[120px] animate-aurora-slow-1"></div>
-          <div className="absolute bottom-[-30%] right-[-15%] w-[70%] aspect-square rounded-full bg-brand-secondary/22 blur-[140px] animate-aurora-slow-2"></div>
-          <div className="absolute top-[15%] left-[25%] w-[50%] aspect-square rounded-full bg-brand-tertiary/25 blur-[100px] animate-aurora-slow-3"></div>
+          {carouselImages.map((src, index) => (
+            <div
+              key={src}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                currentImageIndex === index ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={src}
+                alt="Wonder Mill Installation Background"
+                fill
+                sizes="100vw"
+                priority={index === 0}
+                className="object-cover object-center scale-105"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Aurora Glowing Elements blending with the carousel background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-[-25%] left-[-15%] w-[65%] aspect-square rounded-full bg-brand-primary/10 blur-[120px] animate-aurora-slow-1"></div>
+          <div className="absolute bottom-[-30%] right-[-15%] w-[70%] aspect-square rounded-full bg-brand-secondary/12 blur-[140px] animate-aurora-slow-2"></div>
+          <div className="absolute top-[15%] left-[25%] w-[50%] aspect-square rounded-full bg-brand-tertiary/12 blur-[100px] animate-aurora-slow-3"></div>
         </div>
         
-        {/* Soft frosted glass blending overlay */}
-        <div className="absolute inset-0 bg-white/25 backdrop-blur-2xl pointer-events-none z-0"></div>
+        {/* Soft blending overlay - brand primary green gradient (left-top is more opaque for text legibility, right-bottom is lighter) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/95 via-brand-primary/65 to-brand-primary/30 pointer-events-none z-0"></div>
         
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-center relative z-10">
           
@@ -127,14 +174,14 @@ export default function Home() {
             {/* Main Headline */}
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1]">
-                <span className="text-gradient block">The world&apos;s smartest</span>
-                <span className="text-gradient-accent block my-1">digital stone mill</span>
-                <span className="text-gradient block">recipe-driven, 30% less power.</span>
+                <span className="text-white block">The world&apos;s smartest</span>
+                <span className="bg-gradient-to-r from-brand-tertiary to-brand-secondary bg-clip-text text-transparent block my-1">digital stone mill</span>
+                <span className="text-white block">recipe-driven, 30% less power.</span>
               </h1>
             </div>
 
             {/* Description Paragraph */}
-            <p className="text-base sm:text-lg text-[#3e4d46] leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-3xl">
               Wonder Mill is a patented, IoT-enabled digital stone mill - known as a
               chakki in India - built for flour plants from 20 TPD onwards. Replace
               your standard chakkis with recipe-based milling, run the entire plant
@@ -144,16 +191,16 @@ export default function Home() {
             {/* Trust Badges (3-column, icon on top, text below) */}
             <div className="max-w-md w-full grid grid-cols-3 gap-6 pt-4">
               <div className="flex flex-col items-center text-center">
-                <ShieldCheck className="h-12 w-12 text-brand-primary mb-2" />
-                <span className="text-[#3e4d46] text-xs font-semibold leading-normal">Patented design</span>
+                <ShieldCheck className="h-12 w-12 text-brand-tertiary mb-2" />
+                <span className="text-slate-300 text-xs font-semibold leading-normal">Patented design</span>
               </div>
               <div className="flex flex-col items-center text-center">
-                <Zap className="h-12 w-12 text-brand-primary mb-2 animate-pulse" />
-                <span className="text-[#3e4d46] text-xs font-semibold leading-normal">30% power saving</span>
+                <Zap className="h-12 w-12 text-brand-tertiary mb-2 animate-pulse" />
+                <span className="text-slate-300 text-xs font-semibold leading-normal">30% power saving</span>
               </div>
               <div className="flex flex-col items-center text-center">
-                <Award className="h-12 w-12 text-brand-primary mb-2" />
-                <span className="text-[#3e4d46] text-xs font-semibold leading-normal">CE - ISO certified</span>
+                <Award className="h-12 w-12 text-brand-tertiary mb-2" />
+                <span className="text-slate-300 text-xs font-semibold leading-normal">CE - ISO certified</span>
               </div>
             </div>
 
