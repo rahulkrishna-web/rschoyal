@@ -7,11 +7,11 @@ export default function TopBanner() {
         {/* Contact info */}
         <div className="flex flex-wrap justify-center items-center gap-6">
           <a
-            href="tel:+919845598455"
+            href="tel:+919240289259"
             className="flex items-center gap-1.5 hover:text-brand-indigo transition-colors duration-200"
           >
             <Phone className="h-3.5 w-3.5 text-brand-indigo" />
-            <span>+91 98455 98455</span>
+            <span>+91 92402 89259</span>
           </a>
           <a
             href="mailto:info@rschoyalgroup.com"

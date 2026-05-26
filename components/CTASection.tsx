@@ -73,11 +73,11 @@ export default function CTASection({ onRequestCallback }: CTASectionProps) {
 
                 {/* Secondary Phone call button */}
                 <a
-                  href="tel:+919845398453"
+                  href="tel:+919240289259"
                   className="w-full border border-slate-200 hover:border-brand-indigo/35 hover:bg-slate-50/50 text-slate-800 font-bold py-4.5 px-8 rounded-2xl flex items-center justify-center space-x-2.5 transition-all duration-150 text-center text-sm sm:text-base cursor-pointer"
                 >
                   <Phone className="w-5 h-5 text-brand-indigo flex-shrink-0" />
-                  <span>Call +91 98453 98453</span>
+                  <span>Call +91 92402 89259</span>
                 </a>
 
               </div>
@@ -118,8 +118,8 @@ export default function CTASection({ onRequestCallback }: CTASectionProps) {
               </h3>
               <ul className="space-y-2.5 text-xs sm:text-sm">
                 <li>
-                  <a href="tel:+919845398453" className="text-brand-indigo hover:text-brand-indigo-hover font-bold transition-colors">
-                    +91 98453 98453
+                  <a href="tel:+919240289259" className="text-brand-indigo hover:text-brand-indigo-hover font-bold transition-colors">
+                    +91 92402 89259
                   </a>
                 </li>
                 <li>

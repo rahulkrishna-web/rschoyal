@@ -6,40 +6,40 @@ import { MapPin, Settings, Cpu } from "lucide-react";
 export default function InstallationsGrid() {
   const installations = [
     {
-      title: "150 TPD Atta Plant",
-      desc: "Indore, India · 12 Wonder Mills",
-      tag: "Domestic Plant",
-      img: "/images/atta_plant_150tpd.webp",
-    },
-    {
-      title: "Centralised Control Room",
-      desc: "Ahmedabad, India · 100 TPD plant",
-      tag: "Control Room",
-      img: "/images/wondermill_internal.webp",
-    },
-    {
-      title: "Zams Milling Facility",
-      desc: "Lusaka, Zambia · 40 TPD plant",
-      tag: "International",
+      title: "40 TPD Milling Section, 4 Wonder mills",
+      desc: "Qatar Flour Mills, Qatar",
+      tag: "",
       img: "/images/zams_milling.webp",
     },
     {
-      title: "Wonder Mill Casing Close-Up",
-      desc: "High-precision digital grinding stone installation",
-      tag: "Equipment",
-      img: "/images/annapurna.webp",
+      title: "120 TPD plant, 12 Wonder mills",
+      desc: "Farmerfield Agro, Haryana",
+      tag: "",
+      img: "/images/wondermill_internal.webp",
     },
     {
-      title: "Qatar Flour Mill HMI",
-      desc: "Doha, Qatar · 12 Wonder Mills in operation",
-      tag: "International",
+      title: "40 TPD Plant, 4 Wonder mills",
+      desc: "Annapura Flour Mills, Bihar",
+      tag: "",
+      img: "/images/other_img_9476.webp",
+    },
+    {
+      title: "40 TPD Milling Section, 4 Wonder mills",
+      desc: "Zams Milling, Zambia",
+      tag: "",
       img: "/images/qatar.webp",
     },
     {
-      title: "Automation Panel Setup",
-      desc: "Modular control electrical cabinet layout",
-      tag: "Automation",
-      img: "/images/other_img_9476.webp",
+      title: "40 TPD Plant, 4 Wonder mills",
+      desc: "Riverbank Food, Australia                      ",
+      tag: "",
+      img: "/images/atta_plant_150tpd.webp",
+    },
+    {
+      title: "40 TPD Plant, 4 Wonder mills",
+      desc: "Al Ghurair, Dubai",
+      tag: "",
+      img: "/images/annapurna.webp",
     },
   ];
 
