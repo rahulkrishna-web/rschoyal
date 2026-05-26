@@ -174,11 +174,11 @@ export default function Home() {
             
             {/* RS Choyal Group Logo */}
             <div>
-              <div className="inline-flex bg-white px-5 py-3 rounded-2xl shadow-md border border-white/10">
+              <div className="inline-flex bg-white px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl shadow-md border border-white/10">
                 <img 
                   src="/rschoyal-logo.svg" 
                   alt="RS Choyal Group Logo" 
-                  className="h-[75px] sm:h-[90px] w-auto object-contain"
+                  className="h-[52px] sm:h-[90px] w-auto object-contain"
                 />
               </div>
             </div>
