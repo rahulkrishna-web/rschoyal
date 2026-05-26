@@ -71,7 +71,7 @@ export default function MetricsSection() {
       label: "Mills powered with Choyal tech",
     },
     {
-      target: 15,
+      target: 60,
       suffix: "+",
       label: "Years building milling solutions",
     },

@@ -10,6 +10,7 @@ export default function LeadForm({ className = "" }: { className?: string }) {
     city: "",
     email: "",
     requirement: "",
+    currentTpd: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -18,12 +19,8 @@ export default function LeadForm({ className = "" }: { className?: string }) {
 
   const requirements = [
     { value: "", label: "Select your requirement" },
-    { value: "new_plant_20_30", label: "New mill plant - 20 to 30 TPD" },
-    { value: "new_plant_30_100", label: "New mill plant - 30 to 100 TPD" },
-    { value: "new_plant_100_plus", label: "New mill plant - 100 TPD and above" },
-    { value: "upgrade_chakki", label: "Upgrade existing chakkis to Wonder Mill (30 TPD+)" },
-    { value: "wonder_miller_lite", label: "Wonder Miller Lite (panel only)" },
-    { value: "other", label: "Spares / service / other" },
+    { value: "upgrade_chakki", label: "Upgrade current chakki to Wondermill" },
+    { value: "new_plant_setup", label: "New plant setup" },
   ];
 
   const validate = () => {
@@ -129,23 +126,38 @@ export default function LeadForm({ className = "" }: { className?: string }) {
           </div>
         </div>
 
-        {/* City Field */}
-        <div>
-          <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
-            City <span className="text-brand-indigo">*</span>
-          </label>
-          <input
-            type="text"
-            placeholder="e.g. Indore / Lagos / Dubai"
-            value={formData.city}
-            onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-            className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
-              errors.city
-                ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
-                : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
-            }`}
-          />
-          {errors.city && <p className="text-[11px] text-red-500 mt-1">{errors.city}</p>}
+        {/* City & Current TPD Fields (Grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+              City <span className="text-brand-indigo">*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="e.g. Indore / Lagos / Dubai"
+              value={formData.city}
+              onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+              className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
+                errors.city
+                  ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
+                  : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+              }`}
+            />
+            {errors.city && <p className="text-[11px] text-red-500 mt-1">{errors.city}</p>}
+          </div>
+
+          <div>
+            <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+              Your Current TPD <span className="text-slate-400 font-normal lowercase">(optional)</span>
+            </label>
+            <input
+              type="text"
+              placeholder="e.g. 50 TPD or None"
+              value={formData.currentTpd}
+              onChange={(e) => setFormData({ ...formData, currentTpd: e.target.value })}
+              className="w-full text-sm px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+            />
+          </div>
         </div>
 
         {/* Requirement Field */}

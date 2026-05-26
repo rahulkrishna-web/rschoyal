@@ -22,7 +22,7 @@ export default function FAQSection() {
     },
     {
       question: "How much can I really save on power?",
-      answer: "On average, mill owners report electricity savings of 25% to 35% in the first month. Our advanced high-efficiency motors, combined with automated stone-gap adjustment, ensure maximum grinding efficiency with minimal energy wastage.",
+      answer: "On average, mill owners report electricity savings of 25% to 35%. Our advanced high-efficiency motors, combined with automated stone-gap adjustment, ensure maximum grinding efficiency with minimal energy wastage.",
     },
     {
       question: "Is the system secure? Who can operate it?",

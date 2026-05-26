@@ -14,6 +14,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import SkinControlPanel from "@/components/SkinControlPanel";
+import ImageCarousel from "@/components/ImageCarousel";
 
 interface GlowCardProps {
   children: React.ReactNode;
@@ -93,7 +94,7 @@ export default function Home() {
     {
       icon: <Zap className="h-6 w-6" />,
       title: "Lower power bill, every month",
-      description: "Up to 30% fewer units per 500 kg of output. For most plants, the savings repay the upgrade in a single billing cycle.",
+      description: "Up to 30% fewer units per 500 kg of output. For most plants, the savings repay the upgrade.",
     },
     {
       icon: <Check className="h-6 w-6" />,
@@ -171,19 +172,29 @@ export default function Home() {
           {/* Left Column: Hero Text, Description, Badges */}
           <div className="lg:col-span-7 space-y-10">
             
-            {/* Main Headline */}
+            {/* RS Choyal Group Logo */}
+            <div>
+              <div className="inline-flex bg-white px-5 py-3 rounded-2xl shadow-md border border-white/10">
+                <img 
+                  src="/rschoyal-logo.svg" 
+                  alt="RS Choyal Group Logo" 
+                  className="h-[75px] sm:h-[90px] w-auto object-contain"
+                />
+              </div>
+            </div>
+            
+             {/* Main Headline */}
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1]">
                 <span className="text-white block">The world&apos;s smartest</span>
-                <span className="bg-gradient-to-r from-brand-tertiary to-brand-secondary bg-clip-text text-transparent block my-1">digital stone mill</span>
+                <span className="text-white block my-1">digital stone mill</span>
                 <span className="text-white block">recipe-driven, 30% less power.</span>
               </h1>
             </div>
 
             {/* Description Paragraph */}
             <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-3xl">
-              Wonder Mill is a patented, IoT-enabled digital stone mill - known as a
-              chakki in India - built for flour plants from 20 TPD onwards. Replace
+              Wonder Mill is a patented, IoT-enabled digital stone mill built for flour plants from 20 TPD onwards. Replace
               your standard chakkis with recipe-based milling, run the entire plant
               from your phone, and cut your power bill from day one.
             </p>
@@ -191,15 +202,15 @@ export default function Home() {
             {/* Trust Badges (3-column, icon on top, text below) */}
             <div className="max-w-md w-full grid grid-cols-3 gap-6 pt-4">
               <div className="flex flex-col items-center text-center">
-                <ShieldCheck className="h-12 w-12 text-brand-tertiary mb-2" />
+                <ShieldCheck className="h-12 w-12 text-white mb-2" />
                 <span className="text-slate-300 text-xs font-semibold leading-normal">Patented design</span>
               </div>
               <div className="flex flex-col items-center text-center">
-                <Zap className="h-12 w-12 text-brand-tertiary mb-2 animate-pulse" />
+                <Zap className="h-12 w-12 text-white mb-2 animate-pulse" />
                 <span className="text-slate-300 text-xs font-semibold leading-normal">30% power saving</span>
               </div>
               <div className="flex flex-col items-center text-center">
-                <Award className="h-12 w-12 text-brand-tertiary mb-2" />
+                <Award className="h-12 w-12 text-white mb-2" />
                 <span className="text-slate-300 text-xs font-semibold leading-normal">CE - ISO certified</span>
               </div>
             </div>
@@ -213,6 +224,9 @@ export default function Home() {
 
         </div>
       </main>
+
+      {/* Image Carousel Section */}
+      <ImageCarousel />
 
       {/* Why Wonder Mill Section - cream bg (default) */}
       <section className="w-full px-6 sm:px-12 lg:px-16 xl:px-24 py-16 lg:py-24 relative z-10 section-bg-cream">

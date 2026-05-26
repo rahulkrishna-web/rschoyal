@@ -23,8 +23,7 @@ export default function HMISection() {
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             The on-panel touchscreen and matching mobile app give operators one
             consistent interface for plant operations, recipes, alarms, calibration
-            and data logging. No SCADA training required - most operators are
-            productive on day one.
+            and data logging.
           </p>
 
           {/* Value Adds List */}

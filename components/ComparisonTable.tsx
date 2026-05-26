@@ -133,7 +133,7 @@ export default function ComparisonTable() {
 
         {/* Footer text note */}
         <p className="text-center text-[#3e4d46]/80 text-xs leading-relaxed max-w-2xl mx-auto">
-          For a 30 TPD plant, the unit-per-output difference can repay the upgrade in a single billing cycle on most tariff slabs.
+          The above specifications are indicative and subject to input quality, operating conditions, machine settings, and site-specific parameters. Actual performance may vary in real time. To understand the right configuration for your requirement, please get in touch with us.
         </p>
 
       </div>
