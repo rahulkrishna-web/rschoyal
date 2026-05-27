@@ -172,13 +172,20 @@ export default function Home() {
           {/* Left Column: Hero Text, Description, Badges */}
           <div className="lg:col-span-7 space-y-10">
             
-            {/* RS Choyal Group Logo */}
-            <div>
+            {/* RS Choyal Group & Choyal Logos */}
+            <div className="flex flex-row items-center gap-3 sm:gap-4 flex-wrap">
               <div className="inline-flex bg-white px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl shadow-md border border-white/10">
                 <img 
                   src="/rschoyal-logo.svg" 
                   alt="RS Choyal Group Logo" 
-                  className="h-[52px] sm:h-[90px] w-auto object-contain"
+                  className="h-[26px] sm:h-[45px] w-auto object-contain"
+                />
+              </div>
+              <div className="inline-flex bg-white px-3.5 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl shadow-md border border-white/10">
+                <img 
+                  src="/choyal-logo.png" 
+                  alt="Choyal Logo" 
+                  className="h-[26px] sm:h-[45px] w-auto object-contain"
                 />
               </div>
             </div>
