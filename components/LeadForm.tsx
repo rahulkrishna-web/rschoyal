@@ -1,9 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-export default function LeadForm({ className = "" }: { className?: string }) {
+
+export default function LeadForm({
+  className = "",
+  mode = "wondermill",
+}: {
+  className?: string;
+  mode?: "wondermill" | "stone-dresser";
+}) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -11,17 +18,29 @@ export default function LeadForm({ className = "" }: { className?: string }) {
     email: "",
     requirement: "",
     currentTpd: "",
+    country: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  const requirements = [
-    { value: "", label: "Select your requirement" },
-    { value: "upgrade_chakki", label: "Upgrade current chakki to Wondermill" },
-    { value: "new_plant_setup", label: "New plant setup" },
-  ];
+  const requirements =
+    mode === "stone-dresser"
+      ? [
+          { value: "", label: "Select stone size" },
+          { value: "500mm", label: '500 mm (20")' },
+          { value: "600mm", label: '600 mm (24")' },
+          { value: "750mm", label: '750 mm (30")' },
+          { value: "1200mm", label: '1200 mm (48")' },
+          { value: "multiple", label: "Multiple sizes / unsure" },
+          { value: "other", label: "Spares / service / other" },
+        ]
+      : [
+          { value: "", label: "Select your requirement" },
+          { value: "upgrade_chakki", label: "Upgrade current chakki to Wondermill" },
+          { value: "new_plant_setup", label: "New plant setup" },
+        ];
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -30,6 +49,10 @@ export default function LeadForm({ className = "" }: { className?: string }) {
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.requirement) newErrors.requirement = "Please select a requirement";
     
+    if (mode === "stone-dresser" && !formData.country.trim()) {
+      newErrors.country = "Country is required";
+    }
+
     if (formData.email.trim() && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
@@ -50,7 +73,6 @@ export default function LeadForm({ className = "" }: { className?: string }) {
     }, 1200);
   };
 
-
   return (
     <div className={`relative glass-panel rounded-3xl p-8 shadow-2xl ${className || "shadow-slate-900/10"} transition-all duration-300`}>
       {/* Overlapping top badge */}
@@ -60,10 +82,12 @@ export default function LeadForm({ className = "" }: { className?: string }) {
 
       <div className="mb-6">
         <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-          Talk to a Wonder Mill expert
+          {mode === "stone-dresser" ? "Talk to a Choyal engineer" : "Talk to a Wonder Mill expert"}
         </h3>
         <p className="text-sm sm:text-base text-slate-500 mt-2 leading-relaxed">
-          Share your details - we&apos;ll call back within one working day with plant sizing & pricing.
+          {mode === "stone-dresser"
+            ? "Share your details — we'll call back within one working day with a quote & spec sheet."
+            : "Share your details - we'll call back within one working day with plant sizing & pricing."}
         </p>
       </div>
 
@@ -87,83 +111,166 @@ export default function LeadForm({ className = "" }: { className?: string }) {
           {errors.name && <p className="text-[11px] text-red-500 mt-1">{errors.name}</p>}
         </div>
 
-        {/* Phone & Email Fields (Grid) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
-              Phone <span className="text-brand-indigo">*</span>
-            </label>
-            <input
-              type="tel"
-              placeholder="e.g. +91 98765 43210"
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
-                errors.phone
-                  ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
-                  : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
-              }`}
-            />
-            {errors.phone && <p className="text-[11px] text-red-500 mt-1">{errors.phone}</p>}
-          </div>
+        {mode === "stone-dresser" ? (
+          <>
+            {/* Phone & Country (Grid) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+                  Phone (with country code) <span className="text-brand-indigo">*</span>
+                </label>
+                <input
+                  type="tel"
+                  placeholder="e.g. +91 98765 43210"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
+                    errors.phone
+                      ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
+                      : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+                  }`}
+                />
+                {errors.phone && <p className="text-[11px] text-red-500 mt-1">{errors.phone}</p>}
+              </div>
 
-          <div>
-            <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
-              Email <span className="text-slate-400 font-normal lowercase">(optional)</span>
-            </label>
-            <input
-              type="email"
-              placeholder="email@example.com"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
-                errors.email
-                  ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
-                  : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
-              }`}
-            />
-            {errors.email && <p className="text-[11px] text-red-500 mt-1">{errors.email}</p>}
-          </div>
-        </div>
+              <div>
+                <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+                  Country <span className="text-brand-indigo">*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. India"
+                  value={formData.country}
+                  onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                  className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
+                    errors.country
+                      ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
+                      : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+                  }`}
+                />
+                {errors.country && <p className="text-[11px] text-red-500 mt-1">{errors.country}</p>}
+              </div>
+            </div>
 
-        {/* City & Current TPD Fields (Grid) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
-              City <span className="text-brand-indigo">*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="e.g. Indore / Lagos / Dubai"
-              value={formData.city}
-              onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-              className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
-                errors.city
-                  ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
-                  : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
-              }`}
-            />
-            {errors.city && <p className="text-[11px] text-red-500 mt-1">{errors.city}</p>}
-          </div>
+            {/* City Field */}
+            <div>
+              <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+                City <span className="text-brand-indigo">*</span>
+              </label>
+              <input
+                type="text"
+                placeholder="e.g. Indore / Lagos / Dubai"
+                value={formData.city}
+                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
+                  errors.city
+                    ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
+                    : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+                }`}
+              />
+              {errors.city && <p className="text-[11px] text-red-500 mt-1">{errors.city}</p>}
+            </div>
 
-          <div>
-            <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
-              Your Current TPD <span className="text-slate-400 font-normal lowercase">(optional)</span>
-            </label>
-            <input
-              type="text"
-              placeholder="e.g. 50 TPD or None"
-              value={formData.currentTpd}
-              onChange={(e) => setFormData({ ...formData, currentTpd: e.target.value })}
-              className="w-full text-sm px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
-            />
-          </div>
-        </div>
+            {/* Email Field */}
+            <div>
+              <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+                Email <span className="text-slate-400 font-normal lowercase">(optional)</span>
+              </label>
+              <input
+                type="email"
+                placeholder="email@example.com"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
+                  errors.email
+                    ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
+                    : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+                }`}
+              />
+              {errors.email && <p className="text-[11px] text-red-500 mt-1">{errors.email}</p>}
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Phone & Email Fields (Grid) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+                  Phone <span className="text-brand-indigo">*</span>
+                </label>
+                <input
+                  type="tel"
+                  placeholder="e.g. +91 98765 43210"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
+                    errors.phone
+                      ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
+                      : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+                  }`}
+                />
+                {errors.phone && <p className="text-[11px] text-red-500 mt-1">{errors.phone}</p>}
+              </div>
+
+              <div>
+                <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+                  Email <span className="text-slate-400 font-normal lowercase">(optional)</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="email@example.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
+                    errors.email
+                      ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
+                      : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+                  }`}
+                />
+                {errors.email && <p className="text-[11px] text-red-500 mt-1">{errors.email}</p>}
+              </div>
+            </div>
+
+            {/* City & Current TPD Fields (Grid) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+                  City <span className="text-brand-indigo">*</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Indore / Lagos / Dubai"
+                  value={formData.city}
+                  onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                  className={`w-full text-sm px-4 py-3 rounded-xl border bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none ${
+                    errors.city
+                      ? "border-red-500/50 focus:ring-2 focus:ring-red-500/10"
+                      : "border-slate-200 focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+                  }`}
+                />
+                {errors.city && <p className="text-[11px] text-red-500 mt-1">{errors.city}</p>}
+              </div>
+
+              <div>
+                <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
+                  Your Current TPD <span className="text-slate-400 font-normal lowercase">(optional)</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. 50 TPD or None"
+                  value={formData.currentTpd}
+                  onChange={(e) => setFormData({ ...formData, currentTpd: e.target.value })}
+                  className="w-full text-sm px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 placeholder-slate-400 focus:bg-white transition-all duration-200 outline-none focus:border-brand-indigo focus:ring-2 focus:ring-brand-indigo/10"
+                />
+              </div>
+            </div>
+          </>
+        )}
 
         {/* Requirement Field */}
         <div>
           <label className="block text-[11px] font-bold text-slate-700 tracking-wider uppercase mb-1.5">
-            Requirement <span className="text-brand-indigo">*</span>
+            {mode === "stone-dresser" ? "Stone size you need to dress" : "Requirement"} <span className="text-brand-indigo">*</span>
           </label>
           <div className="relative">
             <select
