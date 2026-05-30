@@ -9,37 +9,37 @@ export default function InstallationsGrid() {
       title: "40 TPD Milling Section, 4 Wonder mills",
       desc: "Qatar Flour Mills, Qatar",
       tag: "",
-      img: "/images/zams_milling.webp",
+      img: "/images/qatar.webp",
     },
     {
       title: "120 TPD plant, 12 Wonder mills",
       desc: "Farmerfield Agro, Haryana",
       tag: "",
-      img: "/images/wondermill_internal.webp",
+      img: "/images/atta_plant_150tpd.webp",
     },
     {
       title: "40 TPD Plant, 4 Wonder mills",
       desc: "Annapura Flour Mills, Bihar",
       tag: "",
-      img: "/images/other_img_9476.webp",
+      img: "/images/annapurna.webp",
     },
     {
       title: "40 TPD Milling Section, 4 Wonder mills",
       desc: "Zams Milling, Zambia",
       tag: "",
-      img: "/images/qatar.webp",
+      img: "/images/zams_milling.webp",
     },
     {
       title: "40 TPD Plant, 4 Wonder mills",
       desc: "Riverbank Food, Australia                      ",
       tag: "",
-      img: "/images/atta_plant_150tpd.webp",
+      img: "/images/5.png",
     },
     {
       title: "40 TPD Plant, 4 Wonder mills",
       desc: "Al Ghurair, Dubai",
       tag: "",
-      img: "/images/annapurna.webp",
+      img: "/images/6.png",
     },
   ];
 
