@@ -35,7 +35,9 @@ function GlowCard({ children }: GlowCardProps) {
 
 export default function StoneDresserPage() {
   const formRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showFloatingCTA, setShowFloatingCTA] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const carouselImages = [
@@ -63,6 +65,23 @@ export default function StoneDresserPage() {
     }, 5000);
     return () => clearInterval(timer);
   }, [carouselImages.length]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowFloatingCTA(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const scrollToForm = () => {
     if (formRef.current) {
@@ -257,7 +276,7 @@ export default function StoneDresserPage() {
       />
 
       {/* --- Main Lead Section - Aurora Slow Light Motion & Image Carousel --- */}
-      <section className="w-full px-6 sm:px-12 lg:px-16 xl:px-24 py-12 lg:py-20 relative z-10 lead-gradient">
+      <section ref={heroRef} className="w-full px-6 sm:px-12 lg:px-16 xl:px-24 py-12 lg:py-20 relative z-10 lead-gradient">
         {/* Background Image Carousel (Below/behind the overlay) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           {carouselImages.map((src, index) => (
@@ -894,15 +913,25 @@ export default function StoneDresserPage() {
       {/* CTA & Footer Section */}
       <CTASection mode="stone-dresser" onRequestCallback={scrollToForm} />
 
-      {/* Floating Callback button */}
-      <div className="fixed bottom-6 right-6 z-40 hidden sm:block">
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="bg-gradient-to-r from-brand-indigo to-brand-violet hover:from-brand-indigo-hover hover:to-brand-violet text-white font-bold py-3.5 px-6 rounded-2xl shadow-[0_8px_25px_rgba(79,70,229,0.35)] hover:shadow-[0_10px_30px_rgba(79,70,229,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center space-x-2 text-sm cursor-pointer"
-        >
-          <Phone className="w-4 h-4" />
-          <span>Request Callback</span>
-        </button>
+      {/* Floating Bottom CTA Button */}
+      <div
+        className="fixed bottom-6 left-1/2 z-40 transition-all duration-500 ease-out flex items-center justify-center group hidden sm:flex"
+        style={{
+          transform: `translateX(-50%) translateY(${showFloatingCTA ? "0px" : "100px"}) scale(${showFloatingCTA ? 1 : 0.9})`,
+          opacity: showFloatingCTA ? 1 : 0,
+          pointerEvents: showFloatingCTA ? "auto" : "none",
+        }}
+      >
+        <div className="relative rounded-full p-[2px] animate-shimmer shadow-xl group-hover:shadow-2xl group-hover:shadow-black/20 group-hover:scale-105 transition-all duration-300">
+          {/* Main CTA Button */}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="relative bg-gradient-to-r from-brand-primary to-brand-secondary text-white font-bold py-3.5 px-6 sm:px-8 rounded-full flex items-center gap-2 cursor-pointer whitespace-nowrap text-sm sm:text-base w-full h-full"
+          >
+            <span>Request a Callback</span>
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
       </div>
 
       {/* Popup Modal Lead Form */}
