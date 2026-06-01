@@ -132,7 +132,7 @@ export default function Home() {
       <div className="absolute top-[40%] right-[30%] w-[30%] aspect-square bg-brand-tertiary/5 rounded-full blur-[100px] pointer-events-none select-none"></div>
 
       {/* Navigation Header */}
-      <Header onRequestCallback={() => setIsModalOpen(true)} />
+      <Header logoSrc="/wondermill-logo.png" onRequestCallback={() => setIsModalOpen(true)} />
 
       {/* --- Main Lead Section - Aurora Slow Light Motion & Image Carousel --- */}
       <main ref={heroRef} className="w-full px-6 sm:px-12 lg:px-16 xl:px-24 py-12 lg:py-20 relative z-10 lead-gradient">

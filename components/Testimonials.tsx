@@ -3,104 +3,43 @@
 import { Star } from "lucide-react";
 
 export default function Testimonials() {
-  const testimonials = [
+  const baseTestimonials = [
     {
-      name: "Rajesh Sharma",
-      role: "Owner - 60 TPD Atta Plant",
-      location: "Indore, India",
-      initials: "RS",
+      name: "Raghav Rathi",
+      role: "Director",
+      location: "Rathi Agro Foods",
+      initials: "RR",
       color: "bg-emerald-600",
-      quote: "After we replaced our old chakkis with Wonder Mill, our electricity bill dropped almost a third in the very first month. The recipe feature alone saves us so many quality complaints.",
+      quote: "Wonder Mill cut our atta losses during power cuts and helped us maintain consistent flour quality. Beyond the technology itself, the Choyal team's problem-solving approach and after-sales support set them apart from every other supplier we've worked with. They've earned our trust completely.",
     },
     {
-      name: "Pankaj Khanna",
-      role: "Operations Head - Flour Mill",
-      location: "Ahmedabad, India",
-      initials: "PK",
+      name: "Darshan Vaid",
+      role: "Director",
+      location: "Vatsalya Agro",
+      initials: "DV",
       color: "bg-indigo-600",
-      quote: "We monitor four mills from one tablet now. Maintenance team gets the alarm before there's any production loss. Would recommend to any plant above 30 TPD.",
+      quote: "We needed grinding consistency that wouldn't compromise on atta softness and Wonder Mill delivered exactly that. Power consumption stays balanced even at full production, maintenance is minimal, and the automation makes daily operation effortless. A genuinely dependable solution for any commercial atta business.",
     },
     {
-      name: "Anil Shah",
-      role: "MD - Family Flour Mill",
-      location: "Nagpur, India",
-      initials: "AS",
+      name: "Himanshu Singh",
+      role: "Director",
+      location: "Heathfuller Flour Foods",
+      initials: "HS",
       color: "bg-violet-600",
-      quote: "Installation was quick and the team trained our operators in two days. The cloud reports help us track every shift's output. A real upgrade for our family business.",
+      quote: "The heat control and hydraulic pressure system keep our atta consistently fresh and uniform, batch after batch. One-touch start makes operation incredibly easy, and the automatic shutdown during any fault has saved us from real damage more than once. Reliable, safe, and remarkably easy to run.",
     },
     {
-      name: "Vikram Reddy",
-      role: "Plant Manager",
-      location: "Hyderabad, India",
-      initials: "VR",
+      name: "Narendra Singh",
+      role: "Founder",
+      location: "Satyam Industries",
+      initials: "NS",
       color: "bg-cyan-600",
-      quote: "The digital stone engaging control is amazing. We no longer rely on operator intuition to set the grinding gap. The consistency of flour is identical across shifts.",
-    },
-    {
-      name: "Gurbaksh Singh",
-      role: "Director - Food Processing",
-      location: "Ludhiana, India",
-      initials: "GS",
-      color: "bg-amber-600",
-      quote: "Wonder Mill's automatic temperature control keeps flour cool during high-speed grinding. This preserves gluten quality and has brought back our institutional buyers.",
-    },
-    {
-      name: "Suresh Mehta",
-      role: "Chief Engineer",
-      location: "Pune, India",
-      initials: "SM",
-      color: "bg-teal-600",
-      quote: "Reduced downtime has been the biggest gain. Standard chakkis needed hours of maintenance, but these modular units let us service one mill without stopping the plant.",
-    },
-    {
-      name: "Amit Patel",
-      role: "Operations Director",
-      location: "Rajkot, India",
-      initials: "AP",
-      color: "bg-rose-600",
-      quote: "We went from manual oversight to automated auditing logs. We can now show our corporate bakery clients exact energy and quality telemetry for every batch.",
-    },
-    {
-      name: "Ramanathan K.",
-      role: "Managing Director",
-      location: "Coimbatore, India",
-      initials: "RK",
-      color: "bg-sky-600",
-      quote: "The power savings of up to 30% are real. Our return on investment was achieved in less than 12 months. Incredible engineering and software interface.",
-    },
-    {
-      name: "Vijay Shekhawat",
-      role: "Owner - Shekhawat Mills",
-      location: "Jaipur, India",
-      initials: "VS",
-      color: "bg-orange-600",
-      quote: "Being able to check plant telemetry from my phone while traveling has changed my life. I don't need to call the control room ten times a day.",
-    },
-    {
-      name: "Devendra Gowda",
-      role: "Shift Supervisor",
-      location: "Bengaluru, India",
-      initials: "DG",
-      color: "bg-emerald-700",
-      quote: "Our operators love the tablet interface. They were hesitant at first, but it is so intuitive that they refuse to go back to mechanical wheels now.",
-    },
-    {
-      name: "Sanjay Banerjee",
-      role: "Director - Quality Assurance",
-      location: "Haldia, India",
-      initials: "SB",
-      color: "bg-blue-600",
-      quote: "No full plant trips anymore. If one mill requires stone redressing, we isolate it digitally and keep the other 7 running. Our efficiency is at an all-time high.",
-    },
-    {
-      name: "Manoj Mishra",
-      role: "Maintenance Lead",
-      location: "Raipur, India",
-      initials: "MM",
-      color: "bg-purple-600",
-      quote: "We get automated WhatsApp and SMS alerts for any overload conditions. This prevention mechanism has saved us from critical breakdowns twice this quarter.",
+      quote: "Wonder Mill helped us scale from 10 to 60 TPD without scaling our team to match. We now consistently produce up to 550 kg per hour, and the automation means even lightly-trained operators can run the machines. My customers get the same flour quality every batch and that's what matters most.",
     },
   ];
+
+  // Programmatically duplicate the list to ensure the marquee has enough elements to loop seamlessly on wider screens
+  const testimonials = [...baseTestimonials, ...baseTestimonials];
 
   const renderStars = () => (
     <div className="flex space-x-1">
@@ -135,7 +74,7 @@ export default function Testimonials() {
         <div className="marquee-container w-full overflow-hidden flex relative mask-gradient">
           
           {/* Card list: Set 1 */}
-          <div className="animate-marquee flex gap-6 flex-shrink-0">
+          <div className="animate-marquee flex gap-6 flex-shrink-0 pr-6">
             {testimonials.map((item, idx) => (
               <div 
                 key={idx}
@@ -166,7 +105,7 @@ export default function Testimonials() {
           </div>
 
           {/* Card list: Set 2 (Identical for seamless infinite scroll) */}
-          <div className="animate-marquee flex gap-6 flex-shrink-0 pl-6">
+          <div className="animate-marquee flex gap-6 flex-shrink-0 pr-6">
             {testimonials.map((item, idx) => (
               <div 
                 key={`dup-${idx}`}

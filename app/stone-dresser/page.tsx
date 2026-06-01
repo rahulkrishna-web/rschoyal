@@ -772,7 +772,7 @@ export default function StoneDresserPage() {
           <div className="marquee-container w-full overflow-hidden flex relative mask-gradient">
             
             {/* Card list: Set 1 */}
-            <div className="animate-marquee flex gap-6 flex-shrink-0">
+            <div className="animate-marquee flex gap-6 flex-shrink-0 pr-6">
               {testimonials.map((item, idx) => (
                 <div 
                   key={idx}
@@ -807,7 +807,7 @@ export default function StoneDresserPage() {
             </div>
 
             {/* Card list: Set 2 (Identical for seamless infinite scroll) */}
-            <div className="animate-marquee flex gap-6 flex-shrink-0 pl-6">
+            <div className="animate-marquee flex gap-6 flex-shrink-0 pr-6">
               {testimonials.map((item, idx) => (
                 <div 
                   key={`dup-${idx}`}
