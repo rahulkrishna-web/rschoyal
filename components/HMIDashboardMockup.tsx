@@ -5,7 +5,6 @@ import { Play, Square, Settings, ShieldAlert, CheckCircle2, Flame, Zap } from "l
 
 export default function HMIDashboardMockup() {
   const [isRunning, setIsRunning] = useState(true);
-  const [rpm, setRpm] = useState(280);
   const [temp, setTemp] = useState(45);
   const [ampere, setAmpere] = useState(34.2);
   const [feedSpeed, setFeedSpeed] = useState(13.4);
@@ -14,13 +13,11 @@ export default function HMIDashboardMockup() {
   // Simulate minor status fluctuations if running
   useEffect(() => {
     if (!isRunning) {
-      setRpm(0);
       setAmpere(0);
       setFeedSpeed(0);
       return;
     }
 
-    setRpm(280);
     setAmpere(34.2);
     setFeedSpeed(13.4);
 
@@ -69,20 +66,10 @@ export default function HMIDashboardMockup() {
                 {isRunning ? "On" : "Off"}
               </span>
             </div>
-            <div className="relative flex flex-col items-center justify-center py-2">
-              {/* Circular Dial Visual */}
-              <div className="w-24 h-24 rounded-full border-4 border-slate-800 flex flex-col items-center justify-center relative">
-                <div 
-                  className="absolute inset-0 rounded-full border-4 border-t-brand-indigo border-r-brand-cyan border-b-transparent border-l-transparent transition-transform duration-1000"
-                  style={{ transform: `rotate(${isRunning ? rpm : 0}deg)` }}
-                ></div>
-                <span className="text-xl font-black">{isRunning ? rpm : 0}</span>
-                <span className="text-[10px] text-slate-400 uppercase font-mono">RPM</span>
-              </div>
-
+            <div className="relative flex flex-col items-center justify-center py-6">
               {/* Feed speed value container */}
-              <div className="mt-4 px-5 py-2 bg-slate-900 border border-slate-800 rounded-xl text-center min-w-[90px] shadow-sm">
-                <span className="text-lg font-black text-slate-100 block">
+              <div className="px-5 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-center min-w-[95px] shadow-sm">
+                <span className="text-xl font-black text-slate-100 block">
                   {isRunning ? feedSpeed.toFixed(1) : "0.0"}
                 </span>
               </div>
