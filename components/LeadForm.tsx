@@ -61,17 +61,86 @@ export default function LeadForm({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    // Get the page URL where this request was generated
+    const sourceUrl = typeof window !== "undefined" ? window.location.href : "";
+
+    const reqLabel = requirements.find((r) => r.value === formData.requirement)?.label || formData.requirement;
+    
+    // Construct COMMENTS field: include the selected requirement, optional fields (TPD, country), and the page URL
+    const commentsArray = [];
+    if (reqLabel) {
+      commentsArray.push(`Requirement: ${reqLabel}`);
+    }
+    if (formData.currentTpd) {
+      commentsArray.push(`Current TPD: ${formData.currentTpd}`);
+    }
+    if (formData.country) {
+      commentsArray.push(`Country: ${formData.country}`);
+    }
+    if (sourceUrl) {
+      commentsArray.push(`Source URL: ${sourceUrl}`);
+    }
+    const comments = commentsArray.join("\n");
+
+    // Request structure as per user's webhook specifications
+    // Webhook URL: https://choyal.bitrix24.in/rest/5336/bp1hm7p0vsp58f9f/crm.lead.add.json
+    const payload = {
+      fields: {
+        TITLE: `Website Lead rschoyalgroup.com: ${formData.name}`,
+        NAME: formData.name,
+        EMAIL: formData.email
+          ? [
+              {
+                VALUE: formData.email,
+                VALUE_TYPE: "WORK",
+              },
+            ]
+          : [],
+        PHONE: [
+          {
+            VALUE: formData.phone,
+            VALUE_TYPE: "WORK",
+          },
+        ],
+        ADDRESS_CITY: formData.city,
+        COMMENTS: comments,
+        SOURCE_ID: "UC_2T85BX",
+      },
+    };
+
+    try {
+      const response = await fetch(
+        "https://choyal.bitrix24.in/rest/5336/bp1hm7p0vsp58f9f/crm.lead.add.json",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (response.ok) {
+        router.push("/thank-you?success=true");
+      } else {
+        console.error("Failed to submit lead to Bitrix:", response.statusText);
+        // Redirect anyway to ensure user experience isn't broken by webhook/network failures
+        router.push("/thank-you?success=true");
+      }
+    } catch (error) {
+      console.error("Error submitting lead to Bitrix:", error);
       router.push("/thank-you?success=true");
-    }, 1200);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   return (
     <div className={`relative glass-panel rounded-3xl p-8 shadow-2xl ${className || "shadow-slate-900/10"} transition-all duration-300`}>
