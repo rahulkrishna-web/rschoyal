@@ -128,6 +128,47 @@ export default function LeadForm({
       );
 
       if (response.ok) {
+        let leadId = "";
+        try {
+          const responseData = await response.json();
+          leadId = responseData.result || "";
+        } catch (err) {
+          console.error("Failed to parse Bitrix response:", err);
+        }
+
+        // Trigger WhatsApp confirmation message
+        try {
+          const whatsbitApiUrl = process.env.NEXT_PUBLIC_WHATSBIT_API_URL || "http://localhost:3000";
+          const isStoneDresser = mode === "stone-dresser";
+          const templateSid = isStoneDresser
+            ? (process.env.NEXT_PUBLIC_TWILIO_STONE_DRESSER_TEMPLATE_SID || "HX68dfb84bba8143c63d42fb9d3a3a9af6")
+            : (process.env.NEXT_PUBLIC_TWILIO_WONDERMILL_TEMPLATE_SID || "HX68dfb84bba8143c63d42fb9d3a3a9af6");
+
+          const textMessage = isStoneDresser
+            ? `Hello ${formData.name},\n\nThank you for contacting RS Choyal. We have received your request for our Stone Dresser systems.\n\nA Choyal engineer will get in touch with you within one working day on this number to provide pricing and specifications.\n\nQuery ID: ${leadId}\nWebsite: rschoyalgroup.com\n\n👉 Please reply with "OK" or "Yes" if you would like us to share pricing and PDF catalogues directly in this chat.`
+            : `Hello ${formData.name},\n\nThank you for contacting RS Choyal. We have received your request regarding Wondermill digital stone milling.\n\nOne of our Wonder Mill experts will call you back within one working day at this number to discuss your requirements.\n\nQuery ID: ${leadId}\nWebsite: rschoyalgroup.com\n\n👉 Please reply with "OK" or "Yes" if you would like us to share pricing and PDF catalogues directly in this chat.`;
+
+          await fetch(`${whatsbitApiUrl}/api/chat/send`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              contactId: formData.phone,
+              text: textMessage,
+              useTemplate: true,
+              templateSid: templateSid,
+              senderName: "System",
+              contentVariables: {
+                "1": formData.name,
+                "2": String(leadId)
+              }
+            }),
+          });
+        } catch (waError) {
+          console.error("Error triggering WhatsApp confirmation:", waError);
+        }
+
         router.push("/thank-you?success=true");
       } else {
         console.error("Failed to submit lead to Bitrix:", response.statusText);
