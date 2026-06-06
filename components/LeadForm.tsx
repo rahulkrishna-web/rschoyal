@@ -80,6 +80,9 @@ export default function LeadForm({
     if (formData.currentTpd) {
       commentsArray.push(`Current TPD: ${formData.currentTpd}`);
     }
+    if (formData.city) {
+      commentsArray.push(`City: ${formData.city}`);
+    }
     if (formData.country) {
       commentsArray.push(`Country: ${formData.country}`);
     }
@@ -110,6 +113,7 @@ export default function LeadForm({
         ],
         ADDRESS_CITY: formData.city,
         UF_CRM_1752059035074: formData.city,
+        UF_CRM_1759314918705: formData.city,
         ADDRESS_COUNTRY: formData.country || "",
         UF_CRM_1752059070902: formData.country || "",
         COMMENTS: comments,
