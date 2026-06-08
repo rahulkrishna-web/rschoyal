@@ -145,15 +145,15 @@ export default function LeadForm({
 
         // Trigger WhatsApp confirmation message
         try {
-          const whatsbitApiUrl = process.env.NEXT_PUBLIC_WHATSBIT_API_URL || "http://localhost:3000";
+          const whatsbitApiUrl = process.env.NEXT_PUBLIC_WHATSBIT_API_URL || "https://whatsbit.vercel.app";
           const isStoneDresser = mode === "stone-dresser";
           const templateSid = isStoneDresser
             ? (process.env.NEXT_PUBLIC_TWILIO_STONE_DRESSER_TEMPLATE_SID || "HX68dfb84bba8143c63d42fb9d3a3a9af6")
-            : (process.env.NEXT_PUBLIC_TWILIO_WONDERMILL_TEMPLATE_SID || "HX68dfb84bba8143c63d42fb9d3a3a9af6");
+            : (process.env.NEXT_PUBLIC_TWILIO_WONDERMILL_TEMPLATE_SID || "HXD796d76e1249f498e8767897e53ee385");
 
           const textMessage = isStoneDresser
             ? `Hello ${formData.name},\n\nThank you for contacting RS Choyal. We have received your request for our Stone Dresser systems.\n\nA Choyal engineer will get in touch with you within one working day on this number to provide pricing and specifications.\n\nQuery ID: ${leadId}\nWebsite: rschoyalgroup.com\n\n👉 Please reply with "OK" or "Yes" if you would like us to share pricing and PDF catalogues directly in this chat.`
-            : `Hello ${formData.name},\n\nThank you for contacting RS Choyal. We have received your request regarding Wondermill digital stone milling.\n\nOne of our Wonder Mill experts will call you back within one working day at this number to discuss your requirements.\n\nQuery ID: ${leadId}\nWebsite: rschoyalgroup.com\n\n👉 Please reply with "OK" or "Yes" if you would like us to share pricing and PDF catalogues directly in this chat.`;
+            : `Hello ${formData.name},\n\nThank you for contacting RS Choyal. We have received your request regarding Wondermill, digital stone mill.\n\nOne of our Wonder Mill experts will call you back within one working day at this number to discuss your requirements.\n\nQuery ID: ${leadId}\nWebsite: rschoyalgroup.com\n\n👉 Please reply with "OK" or "Yes" if you would like us to share pricing and PDF catalogues directly in this chat.`;
 
           await fetch(`${whatsbitApiUrl}/api/chat/send`, {
             method: "POST",
