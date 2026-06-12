@@ -45,7 +45,14 @@ export default function LeadForm({
   const validate = () => {
     const newErrors: Record<string, string> = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else {
+      const cleanPhone = formData.phone.replace(/[\s\-()]/g, "");
+      if (!/^\+?[0-9]{7,15}$/.test(cleanPhone)) {
+        newErrors.phone = "Please enter a valid phone number (e.g. +91 98765 43210)";
+      }
+    }
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.requirement) newErrors.requirement = "Please select a requirement";
     
